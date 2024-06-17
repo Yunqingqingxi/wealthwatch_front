@@ -32,5 +32,12 @@ export const PayMesListOutcome = () =>{
         method:"GET",
         url:"money/payMesListExpense",
     })
-    
+}
+export const PayMesListDatecome = (data) =>{
+    return request({
+        method:"POST",
+        url:"money/payMesListDatecome",
+        data
+    })
+
 }

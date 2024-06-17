@@ -1,72 +1,72 @@
 <template>
   <el-row class="min-h-screen bg-red-200">
-    <el-col :lg="8" :md="12" class="bg-light-100 flex items-center justify-center">
-      <el-form
-          ref="registerFormRef"
-          :rules="rules"
-          :model="registerForm"
-          hide-required-asterisk="hide"
-          style="width: 400px"
-      >
-        <h1 class="font-bold text-3xl text-gray-800 justify-items-center text-center">即将进入神奇海螺</h1>
-        <div class="flex items-center justify-center my-5 text-gray-300 space-x-2">
-          <span class="h-[1px] w-18 bg-gray-200"></span>
-          <span>注册</span>
-          <span class="h-[1px] w-18 bg-gray-200"></span>
+    <transition name="slide">
+      <el-col v-if="isLoginPage" :lg="16" :md="12" class="flex items-center justify-center login-form">
+        <div>
+          <div class="font-bold text-6xl text-light-50 mb-4">欢迎光临</div>
+          <div class="font-bold text-2xl mb-4"></div>
         </div>
-        <el-form-item
-            label="账  号"
-            prop="account"
+      </el-col>
+    </transition>
+    <transition name="slide">
+      <el-col v-if="!isLoginPage" :lg="8" :md="12" class="bg-light-100 flex items-center justify-center -translate-x-6 transition duration-1000 register-form">
+        <el-form
+            ref="registerFormRef"
+            :rules="rules"
+            :model="registerForm"
+            hide-required-asterisk="hide"
+            style="width: 400px"
         >
-          <el-input
-              prefix-icon="User"
-              v-model="registerForm.account"
-              placeholder="请输入账号"
-          />
-        </el-form-item>
-        <el-form-item
-            label="密  码"
-            prop="password"
-        >
-          <el-input
-              prefix-icon="Lock"
-              type="password"
-              v-model="registerForm.password"
-              placeholder="请输入密码"
-          />
-        </el-form-item>
-        <el-form-item
-            label="确 认"
-            prop="rePassword"
-        >
-          <el-input
-              prefix-icon="Lock"
-              type="password"
-              v-model="registerForm.rePassword"
-              placeholder="请确认密码"
-          />
-        </el-form-item>
-        <el-form-item>
-          <el-button
-              type="primary"
-              style="width: 100%;border-radius: 15px"
-              @click="inregister"
-              :loading="loading"
-          >注册</el-button>
-        </el-form-item>
-
-      </el-form>
-    </el-col>
-    <el-col :lg="16" :md="12" class="flex items-center justify-center">
-      <div>
-        <div class="font-bold text-6xl text-light-50 mb-4">
-        想要进入神奇海螺？</div>
-        <div class="font-bold text-2xl mb-4">
-        </div>
-      </div>
-    </el-col>
+          <h1 class="font-bold text-3xl text-gray-800 justify-items-center text-center">即将进入神奇海螺</h1>
+          <div class="flex items-center justify-center my-5 text-gray-300 space-x-2">
+            <span class="h-[1px] w-18 bg-gray-200"></span>
+            <span>注册</span>
+            <span class="h-[1px] w-18 bg-gray-200"></span>
+          </div>
+          <el-form-item
+              label="账  号"
+              prop="account"
+          >
+            <el-input
+                prefix-icon="User"
+                v-model="registerForm.account"
+                placeholder="请输入账号"
+            />
+          </el-form-item>
+          <el-form-item
+              label="密  码"
+              prop="password"
+          >
+            <el-input
+                prefix-icon="Lock"
+                type="password"
+                v-model="registerForm.password"
+                placeholder="请输入密码"
+            />
+          </el-form-item>
+          <el-form-item
+              label="确 认"
+              prop="rePassword"
+          >
+            <el-input
+                prefix-icon="Lock"
+                type="password"
+                v-model="registerForm.rePassword"
+                placeholder="请确认密码"
+            />
+          </el-form-item>
+          <el-form-item>
+            <el-button
+                type="primary"
+                style="width: 100%;border-radius: 15px"
+                @click="inregister"
+                :loading="loading"
+            >注册</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </transition>
   </el-row>
-
 </template>
 
 <script setup>
@@ -146,5 +146,26 @@ const inregister = async () => {
 </script>
 
 <style scoped>
+.slide-enter-active, .slide-leave-active {
+  transition: all 1s ease;
+}
+.slide-enter, .slide-leave-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slide-leave-active {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 
+.slide-out-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: all 1s ease;
+}
+.slide-out-right {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 1s ease;
+}
 </style>

@@ -9,7 +9,7 @@
       </div>
     </div>
   </el-col>
-  <el-col :lg="8" :md="12" class="bg-light-100 flex items-center justify-center">
+  <el-col :lg="8" :md="12" class="bg-light-100 flex items-center justify-center ">
     <el-form
         :rules="rules"
         ref="loginFormRef"
@@ -84,7 +84,7 @@ const rules = ref({
   password:{required: true, message: '请输入密码', trigger: 'blur'},
 })
 
-const  toLogin = async () =>{
+const toLogin = async () =>{
   if(loginFormRef.value){
     await loginFormRef.value.validate(async (valid) => {
       if(!valid){
@@ -92,7 +92,9 @@ const  toLogin = async () =>{
       }
       try{
         loading.value = true;
+        // 开始请求
       const res = await login(ruleForm.value);
+
       console.log(res);
       if(res.code === 200){
         store.setToken(res.data.token);

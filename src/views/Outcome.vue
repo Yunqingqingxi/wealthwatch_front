@@ -28,7 +28,7 @@
   
   <script setup>
   import { ref, onMounted } from 'vue'
-  import { PayMesList,PayMesDelete,PayMesListOutcome} from '@/api/paymes'
+  import { PayMesDelete,PayMesListOutcome} from '@/api/paymes'
   import { ElMessage } from 'element-plus'
   import {useRouter} from 'vue-router'
   import { useTokenStore } from '@/stores/user'

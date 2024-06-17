@@ -3,7 +3,7 @@
   <el-row>
     <el-col :lg="5" md="8" class="min-h-screen">
       <el-container>
-        <el-aside style="width: 350px;">
+        <el-aside style="width: auto;">
           <el-menu :router="true">
             <el-sub-menu index="1">
               <template #title>
@@ -22,6 +22,7 @@
                 <template #title>添加分类</template>
                 <el-menu-item index="/classify/income">收入</el-menu-item>
                 <el-menu-item index="/classify/outcome">支出</el-menu-item>
+                <el-menu-item index="/classify/datecome">日期收支</el-menu-item>
                 <el-menu-item index="/classify/total">总账单</el-menu-item>
               </el-menu-item-group>
             </el-sub-menu>

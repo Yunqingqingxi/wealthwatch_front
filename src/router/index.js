@@ -1,4 +1,6 @@
-import { createRouter,createWebHistory } from "vue-router";
+import { createRouter,createWebHashHistory } from "vue-router";
+import { ElMessage } from 'element-plus';
+
 import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
@@ -9,6 +11,8 @@ import Changepwd from "@/views/Changepwd.vue";
 import Total from '@/views/Total.vue';
 import Income from '@/views/Income.vue';
 import Outcome from '@/views/Outcome.vue';
+import DateCome from "@/views/DateCome.vue";
+
 
 const routes = [
     {
@@ -56,17 +60,22 @@ const routes = [
                 }
         },
         {
-            path:'classify/outcome',
-            name:'支出',
-            component:Outcome,
-            meta:{
-                requiresAuth:true // 需要登录
+                path:'classify/datecome',
+                name:'日期收支',
+                component:DateCome,
+                meta:{
+                    requiresAuth:true // 需要登录
                 }
-        }
-        ],
-        meta:{
-        requiresAuth:true // 需要登录
         },
+        {
+                path:'classify/outcome',
+                name:'支出',
+                component:Outcome,
+                meta:{
+                    requiresAuth:true // 需要登录
+                }
+            },
+        ],
     },
     {
         path:'/login',
@@ -86,7 +95,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 })
 
@@ -95,11 +104,28 @@ router.beforeEach((to,from,next)=>{
         if(localStorage.getItem('token')){
             next()
         }else{
+            ElMessage.warning('请先登录')
             next('/login')
         }
     }else{
         next()
     }
+
+    const loginElement = document.querySelector('.login-form')
+    const registerElement = document.querySelector('.register-form')
+  
+    if (to.name === 'Register' && from.name === 'Login') {
+      if (loginElement) {
+        loginElement.classList.add('slide-out-left')
+      }
+    } else if (to.name === 'Login' && from.name === 'Register') {
+      if (registerElement) {
+        registerElement.classList.add('slide-out-right')
+      }
+    }
+  
+    setTimeout(() => next(), 1000)
+
 })
 
 export default router;

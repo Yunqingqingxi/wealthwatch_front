@@ -1,7 +1,24 @@
-# Vue 3 + Vite
+# 个人账户管理系统
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这是一个实现了用户注册、登录、修改密码、查看，添加，删除账户收支记录、等功能的前端项目。
 
-## Recommended IDE Setup
+# 技术栈
 
-- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur
+Vue3+Vite + pinia + Vue-router + Axios + ElementUI
+
+
+# 项目运行
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```

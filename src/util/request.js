@@ -3,8 +3,8 @@ import { useTokenStore } from '../stores/user';
 import { ElMessage } from 'element-plus';
 
 const server = axios.create({
-    baseURL:'/api',
-    timeout: 5000, // 请求超时时间
+    baseURL:'/api', 
+    timeout: 15000, // 请求超时时间
     setHeaders: {
         'Content-Type': 'application/json',
     },
@@ -13,6 +13,7 @@ const server = axios.create({
 // 请求拦截器 
 server.interceptors.request.use(
     config => {
+
         const store = useTokenStore();
         const token = store.token;
 

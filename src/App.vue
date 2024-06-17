@@ -1,5 +1,5 @@
 <template>
-  <RouterView  class="transition" />
+  <RouterView  class="transition " />
 </template>
 
 <script setup>
